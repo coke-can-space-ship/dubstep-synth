@@ -38,24 +38,12 @@
       "steps": [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0]
     },
     {
-      "name": "snare_main",
-      "voice": {
-        "type": "Snare",
-        "frequency": 200.0,
-        "noise_amount": 0.7,
-        "decay": 0.15,
-        "gain": 0.45,
-        "pan": 0.0
-      },
-      "steps": [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0]
-    },
-    {
       "name": "snare_sample",
       "voice": {
         "type": "Sample",
         "path": "/Users/lob/repos/dubstep-synth/snare.wav",
         "pitch_shift": 1.0,
-        "gain": 0.35,
+        "gain": 0.7,
         "pan": 0.0
       },
       "steps": [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0]
