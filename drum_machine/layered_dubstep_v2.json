@@ -1,0 +1,131 @@
+{
+  "bpm": 140,
+  "bars": 8,
+  "patterns": [
+    {
+      "name": "kick_main",
+      "voice": {
+        "type": "Kick",
+        "frequency": 55.0,
+        "decay": 0.4,
+        "punch": 0.8,
+        "gain": 0.4,
+        "pan": 0.0
+      },
+      "steps": [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0]
+    },
+    {
+      "name": "kick_sample",
+      "voice": {
+        "type": "Sample",
+        "path": "/Users/lob/repos/dubstep-synth/kick.wav",
+        "pitch_shift": 1.0,
+        "gain": 0.25,
+        "pan": 0.0
+      },
+      "steps": [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0]
+    },
+    {
+      "name": "kick_sub",
+      "voice": {
+        "type": "Kick",
+        "frequency": 40.0,
+        "decay": 0.6,
+        "punch": 0.3,
+        "gain": 0.35,
+        "pan": 0.0
+      },
+      "steps": [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0]
+    },
+    {
+      "name": "snare_main",
+      "voice": {
+        "type": "Snare",
+        "frequency": 200.0,
+        "noise_amount": 0.7,
+        "decay": 0.15,
+        "gain": 0.3,
+        "pan": 0.0
+      },
+      "steps": [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0]
+    },
+    {
+      "name": "snare_sample",
+      "voice": {
+        "type": "Sample",
+        "path": "/Users/lob/repos/dubstep-synth/snare.wav",
+        "pitch_shift": 1.0,
+        "gain": 0.2,
+        "pan": 0.0
+      },
+      "steps": [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0]
+    },
+    {
+      "name": "clap_layer",
+      "voice": {
+        "type": "Clap",
+        "num_claps": 4,
+        "spread": 0.01,
+        "decay": 0.1,
+        "gain": 0.15,
+        "pan": 0.0
+      },
+      "steps": [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0]
+    },
+    {
+      "name": "hihat_eighths",
+      "voice": {
+        "type": "HiHat",
+        "frequency": 8000.0,
+        "decay": 0.05,
+        "gain": 0.12,
+        "pan": -0.3
+      },
+      "steps": [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
+    },
+    {
+      "name": "hihat_accents",
+      "voice": {
+        "type": "HiHat",
+        "frequency": 10000.0,
+        "decay": 0.08,
+        "gain": 0.18,
+        "pan": 0.3
+      },
+      "steps": [1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+      "name": "cymbal_crashes",
+      "voice": {
+        "type": "Cymbal",
+        "frequency": 3000.0,
+        "decay": 1.5,
+        "gain": 0.08,
+        "pan": -0.5
+      },
+      "steps": [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+      "name": "rim_ghosts",
+      "voice": {
+        "type": "Rim",
+        "frequency": 1500.0,
+        "decay": 0.03,
+        "gain": 0.06,
+        "pan": 0.4
+      },
+      "steps": [0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0]
+    },
+    {
+      "name": "tom_fills",
+      "voice": {
+        "type": "Tom",
+        "frequency": 120.0,
+        "decay": 0.3,
+        "gain": 0.2,
+        "pan": -0.2
+      },
+      "steps": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1]
+    }
+  ]
+}

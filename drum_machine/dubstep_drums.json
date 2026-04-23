@@ -1,0 +1,44 @@
+{
+  "bpm": 140,
+  "bars": 8,
+  "patterns": {
+    "kick": {
+      "steps": [true, false, false, false, false, false, false, false, true, false, false, false, false, false, false, false],
+      "synth": {
+        "type": "kick",
+        "pitch": 55.0,
+        "pitch_decay": 8.0,
+        "decay": 50.0,
+        "amp": 1.5
+      }
+    },
+    "snare": {
+      "steps": [false, false, false, false, true, false, false, false, false, false, false, false, true, false, false, false],
+      "synth": {
+        "type": "snare",
+        "noise_amount": 0.7,
+        "tone_freq": 200.0,
+        "decay": 30.0,
+        "amp": 1.0
+      }
+    },
+    "hihat": {
+      "steps": [true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false],
+      "synth": {
+        "type": "hihat",
+        "brightness": 1.2,
+        "decay": 30.0,
+        "amp": 0.6
+      }
+    },
+    "hihat_accent": {
+      "steps": [true, false, false, false, false, false, false, false, true, false, false, false, false, false, false, false],
+      "synth": {
+        "type": "hihat",
+        "brightness": 1.5,
+        "decay": 50.0,
+        "amp": 0.9
+      }
+    }
+  }
+}

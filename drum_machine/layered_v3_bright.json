@@ -1,0 +1,108 @@
+{
+  "bpm": 140,
+  "bars": 8,
+  "patterns": [
+    {
+      "name": "kick_main",
+      "voice": {
+        "type": "Kick",
+        "frequency": 60.0,
+        "decay": 0.35,
+        "punch": 0.85,
+        "gain": 0.5,
+        "pan": 0.0
+      },
+      "steps": [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0]
+    },
+    {
+      "name": "kick_sample",
+      "voice": {
+        "type": "Sample",
+        "path": "/Users/lob/repos/dubstep-synth/kick.wav",
+        "pitch_shift": 1.0,
+        "gain": 0.35,
+        "pan": 0.0
+      },
+      "steps": [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0]
+    },
+    {
+      "name": "snare_main",
+      "voice": {
+        "type": "Snare",
+        "frequency": 220.0,
+        "noise_amount": 0.5,
+        "decay": 0.12,
+        "gain": 0.4,
+        "pan": 0.0
+      },
+      "steps": [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0]
+    },
+    {
+      "name": "snare_sample",
+      "voice": {
+        "type": "Sample",
+        "path": "/Users/lob/repos/dubstep-synth/snare.wav",
+        "pitch_shift": 1.05,
+        "gain": 0.3,
+        "pan": 0.0
+      },
+      "steps": [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0]
+    },
+    {
+      "name": "clap_layer",
+      "voice": {
+        "type": "Clap",
+        "num_claps": 3,
+        "spread": 0.008,
+        "decay": 0.08,
+        "gain": 0.2,
+        "pan": 0.0
+      },
+      "steps": [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0]
+    },
+    {
+      "name": "hihat_eighths",
+      "voice": {
+        "type": "HiHat",
+        "frequency": 12000.0,
+        "decay": 0.04,
+        "gain": 0.15,
+        "pan": -0.4
+      },
+      "steps": [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
+    },
+    {
+      "name": "hihat_accents",
+      "voice": {
+        "type": "HiHat",
+        "frequency": 14000.0,
+        "decay": 0.06,
+        "gain": 0.22,
+        "pan": 0.4
+      },
+      "steps": [1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+      "name": "cymbal_crashes",
+      "voice": {
+        "type": "Cymbal",
+        "frequency": 4000.0,
+        "decay": 1.2,
+        "gain": 0.12,
+        "pan": -0.6
+      },
+      "steps": [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+      "name": "rim_ghosts",
+      "voice": {
+        "type": "Rim",
+        "frequency": 1800.0,
+        "decay": 0.03,
+        "gain": 0.1,
+        "pan": 0.5
+      },
+      "steps": [0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0]
+    }
+  ]
+}

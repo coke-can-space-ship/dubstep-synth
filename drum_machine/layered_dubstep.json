@@ -1,0 +1,118 @@
+{
+  "bpm": 140.0,
+  "bars": 8,
+  "patterns": [
+    {
+      "name": "kick_layer1_synth",
+      "steps": [true, false, false, false, false, false, false, false, true, false, false, false, false, false, false, false],
+      "synth": {
+        "type": "kick",
+        "pitch": 55.0,
+        "decay": 12.0,
+        "punch": 8.0,
+        "sub": 0.6
+      }
+    },
+    {
+      "name": "kick_layer2_sample",
+      "steps": [true, false, false, false, false, false, false, false, true, false, false, false, false, false, false, false],
+      "synth": {
+        "type": "sample",
+        "path": "/Users/lob/repos/dubstep-synth/kick.wav",
+        "amp": 0.4,
+        "pitch_shift": 1.0
+      }
+    },
+    {
+      "name": "kick_sub_layer",
+      "steps": [true, false, false, false, false, false, false, false, true, false, false, false, false, false, false, false],
+      "synth": {
+        "type": "kick",
+        "pitch": 40.0,
+        "decay": 8.0,
+        "punch": 2.0,
+        "sub": 0.9
+      }
+    },
+    {
+      "name": "snare_layer1_synth",
+      "steps": [false, false, false, false, true, false, false, false, false, false, false, false, true, false, false, false],
+      "synth": {
+        "type": "snare",
+        "tone_freq": 200.0,
+        "decay": 15.0,
+        "noise_amount": 0.7,
+        "snap": 0.8
+      }
+    },
+    {
+      "name": "snare_layer2_sample",
+      "steps": [false, false, false, false, true, false, false, false, false, false, false, false, true, false, false, false],
+      "synth": {
+        "type": "sample",
+        "path": "/Users/lob/repos/dubstep-synth/snare.wav",
+        "amp": 0.5,
+        "pitch_shift": 1.0
+      }
+    },
+    {
+      "name": "snare_clap_layer",
+      "steps": [false, false, false, false, true, false, false, false, false, false, false, false, true, false, false, false],
+      "synth": {
+        "type": "clap",
+        "brightness": 1.2,
+        "reverb": 0.3,
+        "layers": 4
+      }
+    },
+    {
+      "name": "hihat_eighths",
+      "steps": [false, false, true, false, false, false, true, false, false, false, true, false, false, false, true, false],
+      "synth": {
+        "type": "hihat",
+        "brightness": 1.5,
+        "decay": 40.0,
+        "amp": 0.5
+      }
+    },
+    {
+      "name": "hihat_accents",
+      "steps": [true, false, false, false, false, false, false, false, true, false, false, false, false, false, false, false],
+      "synth": {
+        "type": "hihat",
+        "brightness": 2.0,
+        "decay": 60.0,
+        "amp": 0.7
+      }
+    },
+    {
+      "name": "cymbal_crashes",
+      "steps": [true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+      "synth": {
+        "type": "cymbal",
+        "brightness": 1.3,
+        "decay": 3.0,
+        "shimmer": 0.6
+      }
+    },
+    {
+      "name": "rim_ghost",
+      "steps": [false, false, false, true, false, false, false, false, false, false, false, true, false, false, false, false],
+      "synth": {
+        "type": "rim",
+        "pitch": 800.0,
+        "click": 0.8
+      }
+    },
+    {
+      "name": "tom_fills",
+      "steps": [false, false, false, false, false, false, false, false, false, false, false, false, false, false, true, true],
+      "synth": {
+        "type": "tom",
+        "pitch": 120.0,
+        "decay": 18.0,
+        "tone": 0.7
+      }
+    }
+  ]
+}

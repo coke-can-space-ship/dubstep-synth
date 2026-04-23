@@ -1,0 +1,108 @@
+{
+  "bpm": 140,
+  "bars": 8,
+  "patterns": [
+    {
+      "name": "kick_main",
+      "voice": {
+        "type": "Kick",
+        "frequency": 58.0,
+        "decay": 0.3,
+        "punch": 0.95,
+        "gain": 0.65,
+        "pan": 0.0
+      },
+      "steps": [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0]
+    },
+    {
+      "name": "kick_sample",
+      "voice": {
+        "type": "Sample",
+        "path": "/Users/lob/repos/dubstep-synth/kick.wav",
+        "pitch_shift": 1.02,
+        "gain": 0.45,
+        "pan": 0.0
+      },
+      "steps": [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0]
+    },
+    {
+      "name": "snare_main",
+      "voice": {
+        "type": "Snare",
+        "frequency": 210.0,
+        "noise_amount": 0.65,
+        "decay": 0.13,
+        "gain": 0.5,
+        "pan": 0.0
+      },
+      "steps": [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0]
+    },
+    {
+      "name": "snare_sample",
+      "voice": {
+        "type": "Sample",
+        "path": "/Users/lob/repos/dubstep-synth/snare.wav",
+        "pitch_shift": 1.0,
+        "gain": 0.4,
+        "pan": 0.0
+      },
+      "steps": [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0]
+    },
+    {
+      "name": "clap_layer",
+      "voice": {
+        "type": "Clap",
+        "num_claps": 3,
+        "spread": 0.006,
+        "decay": 0.09,
+        "gain": 0.28,
+        "pan": 0.0
+      },
+      "steps": [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0]
+    },
+    {
+      "name": "hihat_eighths",
+      "voice": {
+        "type": "HiHat",
+        "frequency": 9000.0,
+        "decay": 0.04,
+        "gain": 0.11,
+        "pan": -0.25
+      },
+      "steps": [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
+    },
+    {
+      "name": "hihat_accents",
+      "voice": {
+        "type": "HiHat",
+        "frequency": 11000.0,
+        "decay": 0.06,
+        "gain": 0.16,
+        "pan": 0.25
+      },
+      "steps": [1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+      "name": "rim_ghosts",
+      "voice": {
+        "type": "Rim",
+        "frequency": 1600.0,
+        "decay": 0.025,
+        "gain": 0.12,
+        "pan": 0.35
+      },
+      "steps": [0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0]
+    },
+    {
+      "name": "tom_fills",
+      "voice": {
+        "type": "Tom",
+        "frequency": 115.0,
+        "decay": 0.28,
+        "gain": 0.35,
+        "pan": -0.15
+      },
+      "steps": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1]
+    }
+  ]
+}
