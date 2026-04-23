@@ -1,0 +1,23 @@
+{
+  "bpm": 140.0,
+  "total_bars": 96,
+  "sample_rate": 44100,
+  "tracks": [
+    {
+      "path": "/Users/lob/.zeroclaw/workspace/wobble.wav",
+      "start_bar": 0,
+      "end_bar": 96,
+      "gain": 0.6,
+      "fade_in_bars": 0,
+      "fade_out_bars": 0
+    },
+    {
+      "path": "/Users/lob/repos/dubstep-synth/drum_machine/layered_v3_punchy.wav",
+      "start_bar": 0,
+      "end_bar": 96,
+      "gain": 0.8,
+      "fade_in_bars": 0,
+      "fade_out_bars": 0
+    }
+  ]
+}

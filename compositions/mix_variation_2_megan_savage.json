@@ -1,0 +1,23 @@
+{
+  "sample_rate": 44100,
+  "bpm": 140.0,
+  "total_bars": 96,
+  "tracks": [
+    {
+      "path": "drum_machine/layered_v3_punchy_96bars.wav",
+      "start_bar": 0,
+      "end_bar": 96,
+      "gain": 1.0,
+      "fade_in_bars": 0.0,
+      "fade_out_bars": 0.0
+    },
+    {
+      "path": "vocal_stem/megan_savage_vocals_44k.wav",
+      "start_bar": 32,
+      "end_bar": 48,
+      "gain": 0.8,
+      "fade_in_bars": 0.5,
+      "fade_out_bars": 0.5
+    }
+  ]
+}

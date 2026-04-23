@@ -1,0 +1,22 @@
+{
+  "bpm": 140,
+  "total_bars": 96,
+  "sample_rate": 44100,
+  "tracks": [
+    {
+      "path": "/Users/lob/repos/dubstep-synth/drum_machine/layered_v3_punchy_96bars.wav",
+      "start_bar": 0.0,
+      "gain": 0.8,
+      "fade_in_bars": 0.0,
+      "fade_out_bars": 0.0
+    },
+    {
+      "path": "/Users/lob/repos/dubstep-synth/vocal_stem/mf_doom_accordion_vocals.wav",
+      "start_bar": 48.0,
+      "end_bar": 64.0,
+      "gain": 0.6,
+      "fade_in_bars": 1.0,
+      "fade_out_bars": 1.0
+    }
+  ]
+}

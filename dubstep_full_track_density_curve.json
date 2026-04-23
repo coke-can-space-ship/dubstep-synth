@@ -1,0 +1,23 @@
+{
+  "audio_file": "/Users/lob/repos/dubstep-synth/dubstep_full_track.wav",
+  "window_size_seconds": 30.0,
+  "hop_size_seconds": 15.0,
+  "bpm": 140.0,
+  "total_windows": 1,
+  "windows": [
+    {
+      "start_time": 0.0,
+      "end_time": 30.0,
+      "onset_count": 793,
+      "density_per_second": 26.433332,
+      "density_per_bar": 45.314285,
+      "section_guess": "Drop (high energy)"
+    }
+  ],
+  "global_stats": {
+    "min_density": 45.314285,
+    "max_density": 45.314285,
+    "avg_density": 45.314285,
+    "median_density": 45.314285
+  }
+}
