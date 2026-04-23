@@ -1,0 +1,20 @@
+[package]
+name = "vocal_stem"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "key_detect"
+path = "src/key_detect.rs"
+
+[[bin]]
+name = "vocal_extract"
+path = "src/vocal_extract.rs"
+
+[[bin]]
+name = "pitch_shift"
+path = "src/pitch_shift.rs"
+
+[dependencies]
+hound = "3.5"
+rustfft = "6.2"
