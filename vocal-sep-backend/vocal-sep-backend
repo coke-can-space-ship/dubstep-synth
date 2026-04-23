@@ -1,0 +1,234 @@
+#!/usr/bin/env python3
+"""
+vocal-sep-backend - Demucs wrapper implementing the vocal separation contract
+
+Contract: vocal_separation_contract.md
+"""
+
+import argparse
+import json
+import sys
+import os
+from pathlib import Path
+from datetime import datetime
+import time
+
+try:
+    import torch
+    from demucs.pretrained import get_model
+    from demucs.apply import apply_model
+    from demucs.audio import AudioFile, save_audio
+except ImportError:
+    print(json.dumps({
+        "error": "missing_dependencies",
+        "message": "Required dependencies not installed. Run: pip install demucs torch",
+        "details": {}
+    }), file=sys.stderr)
+    sys.exit(3)
+
+VERSION = "python-demucs-4.0.0"
+
+MODELS = {
+    "htdemucs": {
+        "id": "htdemucs",
+        "stems": ["vocals", "drums", "bass", "other"],
+        "quality": "standard",
+        "size_mb": 2300
+    },
+    "htdemucs_ft": {
+        "id": "htdemucs_ft",
+        "stems": ["vocals", "drums", "bass", "other"],
+        "quality": "fine_tuned",
+        "size_mb": 2300
+    },
+    "htdemucs_6s": {
+        "id": "htdemucs_6s",
+        "stems": ["vocals", "drums", "bass", "other", "guitar", "piano"],
+        "quality": "standard",
+        "size_mb": 2800
+    }
+}
+
+
+def report_progress(progress: float, stage: str):
+    """Report progress to stderr as JSON"""
+    print(json.dumps({"progress": progress, "stage": stage}), file=sys.stderr, flush=True)
+
+
+def error_exit(error_code: str, message: str, details: dict = None, exit_code: int = 3):
+    """Print error JSON to stderr and exit"""
+    print(json.dumps({
+        "error": error_code,
+        "message": message,
+        "details": details or {}
+    }), file=sys.stderr)
+    sys.exit(exit_code)
+
+
+def list_models():
+    """Print available models as JSON"""
+    print(json.dumps({"models": list(MODELS.values())}))
+    sys.exit(0)
+
+
+def validate_args(args):
+    """Validate command-line arguments"""
+    # Check input file
+    if not os.path.exists(args.input):
+        error_exit("invalid_input_path", f"Input file not found: {args.input}", exit_code=2)
+    
+    if not os.path.isfile(args.input):
+        error_exit("invalid_input_path", f"Input path is not a file: {args.input}", exit_code=2)
+    
+    # Check output directory
+    if not os.path.exists(args.output_dir):
+        try:
+            os.makedirs(args.output_dir, exist_ok=True)
+        except Exception as e:
+            error_exit("invalid_output_dir", f"Cannot create output directory: {e}", exit_code=2)
+    
+    if not os.path.isdir(args.output_dir):
+        error_exit("invalid_output_dir", f"Output path is not a directory: {args.output_dir}", exit_code=2)
+    
+    # Check model
+    if args.model not in MODELS:
+        error_exit("model_not_found", f"Unknown model: {args.model}. Use --list-models to see available models.", exit_code=4)
+    
+    # Check stems
+    model_stems = MODELS[args.model]["stems"]
+    requested_stems = [s.strip() for s in args.stems.split(",")]
+    
+    for stem in requested_stems:
+        if stem not in model_stems:
+            error_exit("invalid_stem", f"Stem '{stem}' not supported by model '{args.model}'. Available: {', '.join(model_stems)}", exit_code=4)
+    
+    return requested_stems
+
+
+def separate_audio(args, requested_stems):
+    """Perform audio separation using Demucs"""
+    start_time = time.time()
+    
+    try:
+        report_progress(0.0, "loading_model")
+        
+        # Load model
+        model = get_model(args.model)
+        model.eval()
+        
+        report_progress(0.1, "loading_audio")
+        
+        # Load audio
+        wav = AudioFile(args.input).read(streams=0, samplerate=model.samplerate, channels=model.audio_channels)
+        
+        # Move to appropriate device
+        device = "cuda" if torch.cuda.is_available() else "cpu"
+        if torch.backends.mps.is_available():
+            device = "mps"
+        
+        wav = wav.to(device)
+        model = model.to(device)
+        
+        report_progress(0.3, "separating")
+        
+        # Apply model
+        with torch.no_grad():
+            sources = apply_model(model, wav[None], device=device)[0]
+        
+        sources = sources.cpu()
+        
+        report_progress(0.7, "writing_outputs")
+        
+        # Get stem names from model
+        stem_names = model.sources
+        
+        # Prepare output paths
+        input_path = Path(args.input)
+        input_basename = input_path.stem
+        output_dir = Path(args.output_dir)
+        
+        stems_generated = []
+        
+        # Save requested stems
+        for i, stem_name in enumerate(stem_names):
+            if stem_name in requested_stems:
+                output_path = output_dir / f"{input_basename}_{stem_name}.{args.format}"
+                
+                # Save audio
+                save_audio(
+                    sources[i],
+                    output_path,
+                    samplerate=args.sample_rate or model.samplerate,
+                    clip="rescale"
+                )
+                
+                stems_generated.append(stem_name)
+        
+        report_progress(0.9, "writing_metadata")
+        
+        # Write metadata
+        processing_time_ms = int((time.time() - start_time) * 1000)
+        
+        metadata = {
+            "input_file": str(Path(args.input).absolute()),
+            "model": args.model,
+            "stems_requested": requested_stems,
+            "stems_generated": stems_generated,
+            "output_format": args.format,
+            "sample_rate": args.sample_rate or model.samplerate,
+            "processing_time_ms": processing_time_ms,
+            "backend_version": VERSION,
+            "timestamp": datetime.now().astimezone().isoformat()
+        }
+        
+        metadata_path = output_dir / f"{input_basename}_metadata.json"
+        with open(metadata_path, "w") as f:
+            json.dump(metadata, f, indent=2)
+        
+        report_progress(1.0, "complete")
+        
+        return 0
+        
+    except Exception as e:
+        error_exit("processing_failed", f"Separation failed: {str(e)}", {"exception_type": type(e).__name__})
+
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="vocal-sep-backend - ML-powered audio separation using Demucs"
+    )
+    
+    parser.add_argument("--version", action="store_true", help="Show version")
+    parser.add_argument("--list-models", action="store_true", help="List available models")
+    
+    parser.add_argument("--input", type=str, help="Input audio file")
+    parser.add_argument("--output-dir", type=str, help="Output directory")
+    parser.add_argument("--model", type=str, help="Model name")
+    parser.add_argument("--stems", type=str, help="Comma-separated stem names")
+    parser.add_argument("--format", type=str, default="wav", help="Output format (wav, flac, mp3)")
+    parser.add_argument("--sample-rate", type=int, help="Output sample rate")
+    
+    args = parser.parse_args()
+    
+    # Handle special commands
+    if args.version:
+        print(VERSION)
+        sys.exit(0)
+    
+    if args.list_models:
+        list_models()
+    
+    # Validate required arguments
+    if not all([args.input, args.output_dir, args.model, args.stems]):
+        parser.print_help()
+        error_exit("invalid_arguments", "Missing required arguments: --input, --output-dir, --model, --stems", exit_code=1)
+    
+    # Validate arguments
+    requested_stems = validate_args(args)
+    
+    # Perform separation
+    sys.exit(separate_audio(args, requested_stems))
+
+
+if __name__ == "__main__":
+    main()
